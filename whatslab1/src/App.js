@@ -1,6 +1,7 @@
 import React from "react";
 import * as All from "./App.styles"
-// import UserMessages from "./components/UserMessages/UserMessages";
+
+import UserMessages from "./components/UserMessages/UserMessages";
 
 class App extends React.Component {
     state = {
@@ -15,33 +16,30 @@ class App extends React.Component {
     }
 
     onSend = () => {
-        if (this.state.valueInputUser === ""){
-            const warning = alert("Digite o nome do Usuário!")
+        if (this.state.valueInputUser === "") {
             this.setState({
                 valueInputUser: "",
                 valueInputMessage: ""
             })
 
-            return warning
+            return alert("Digite o nome do Usuário!")
         }
 
-        if (this.state.valueInputMessage === ""){
-            const warning = alert("Insira uma mensagem antes de enviar!")
+        if (this.state.valueInputMessage === "") {
             this.setState({
                 valueInputUser: "",
                 valueInputMessage: ""
             })
 
-            return warning
+            return alert("Insira uma mensagem antes de enviar!")
         }
 
         const message = {
-            user: this.state.valueInputUser,
+            user: this.state.valueInputUser + ": ",
             message: this.state.valueInputMessage
         }
 
-        const newMessage = [ ...this.state.message, message]
-
+        const newMessage = [...this.state.message, message]
 
 
         this.setState({
@@ -68,9 +66,10 @@ class App extends React.Component {
     render() {
         const messages = this.state.message.map((messages, index) => {
             return (
-                <div key={index}>
-                    <h4><strong>{messages.user}  </strong>: {messages.message}</h4>
-                </div>
+                <UserMessages
+                    userName={messages.user}
+                    userMessage={messages.message}
+                />
             )
         })
 
@@ -78,7 +77,21 @@ class App extends React.Component {
         return (
             <All.Container>
 
-                <All.Chat>
+                <All.I1>
+                    <All.Contacts>
+                        <All.User>
+                            <div>
+                                <input
+                                    value={this.state.valueInputUser}
+                                    onChange={this.onChangeUser}
+                                    placeholder={"Usuário"}
+                                />
+                            </div>
+                        </All.User>
+                    </All.Contacts>
+                </All.I1>
+
+                <All.I2>
                     <All.Messages>
                         {messages}
                     </All.Messages>
@@ -96,21 +109,7 @@ class App extends React.Component {
                             </span>
                         </div>
                     </All.AddMessage>
-                </All.Chat>
-
-                
-                <All.Contacts>
-                    <All.User>
-                        <div>
-                            <input
-                                value={this.state.valueInputUser}
-                                onChange={this.onChangeUser}
-                                placeholder={"Usuário"}
-                            />
-                        </div>
-                    </All.User>
-                </All.Contacts>
-
+                </All.I2>
             </All.Container>
         )
     }

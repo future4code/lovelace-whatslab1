@@ -5,63 +5,68 @@ import styled from "styled-components"
 export const Container = styled.div`
   display: grid;
   grid-auto-columns: 1fr;
-  grid-template-columns: 0.7fr 1.6fr 0.7fr;
-  grid-template-rows: 0.6fr 1.7fr 0.7fr;
-  gap: 4px 20px;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 0.7fr 1.6fr;
+  grid-template-rows: 1.7fr;
+  gap: 4px 30px;
   grid-template-areas: 
-    ". . ."
-    "contato chat ."
-    ". . .";
+    ". .";
+  justify-content: stretch;
+  justify-items: stretch;
+  align-items: center;
+
 `
 
-export const Contacts = styled.div`
+export const I1 = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1.4fr 0.6fr;
   gap: 0px 0px;
   grid-template-areas: 
-    "usuario"
-    "usuario"
-    "usuario";
-  grid-area: contato;
-
-  border: 1px solid #000;
-  border-radius: 5px;
-  padding: 10px;
+    "contato"
+    "contato"
+    "nomeusuario";
 `
 
-export const User = styled.div`
-  justify-self: start;
-  align-self: end;
-  grid-area: usuario;
-  
-  
-`
-
-export const Chat = styled.div`
+export const I2 = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1.6fr 0.4fr;
+  grid-template-rows: 1.8fr 0.2fr;
   gap: 0px 0px;
   grid-template-areas: 
     "messages"
-    "addmessage";
-  grid-area: chat;
+    "message";
+`
 
+export const Contacts = styled.div`
+  grid-area: contato;
+
+  
+`
+
+export const User = styled.div`
+  align-self: end;
+  grid-area: nomeusuario
   border: 1px solid #000;
   border-radius: 5px;
   padding: 10px;
+  
 `
 
 export const Messages = styled.div`
-  justify-self: stretch;
-  align-self: end;
   grid-area: messages;
-  margin-top: 2px;
+  border: 1px solid #000;
+  border-radius: 7px;
+  margin: 20px;
+  height: 400px;
+  width: 500px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: block;
+  
 `
 
 export const AddMessage = styled.div`
-  justify-self: stretch;
-  align-self: end;
-  grid-area: addmessage;
+  grid-area: message;
+  margin: 10px auto;
 `
