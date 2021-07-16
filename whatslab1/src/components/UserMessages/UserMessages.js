@@ -1,25 +1,11 @@
 import React from 'react';
+import * as All from "./UserMessages.styles"
 
-
-class UserMessages extends React.Component {
-    state = {
-
-    }
-
-    render() {
-        return (
-            <div>
-                <h4>
-                    <strong>
-                    </strong>
-                </h4>
-
-                <p>
-
-                </p>
-            </div>
-        )
-    }
+export default function UserMessages(props) {
+    return (
+        <All.Flex>
+            <h4>{props.userName}</h4>
+            <p>{props.userMessage}</p>
+        </All.Flex>
+    )
 }
-
-export default UserMessages
