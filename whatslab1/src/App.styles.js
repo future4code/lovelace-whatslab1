@@ -21,7 +21,7 @@ export const I1 = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1.4fr 0.6fr;
-  gap: 0px 0px;
+  gap: 0 0;
   grid-template-areas: 
     "contato"
     "contato"
@@ -32,7 +32,7 @@ export const I2 = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1.8fr 0.2fr;
-  gap: 0px 0px;
+  gap: 0 0;
   grid-template-areas: 
     "messages"
     "message";
@@ -40,16 +40,26 @@ export const I2 = styled.div`
 
 export const Contacts = styled.div`
   grid-area: contato;
-
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 20px;
+  height: 350px;
+  overflow-y: scroll;
+  overflow-x: hidden;
   
 `
 
 export const User = styled.div`
   align-self: end;
-  grid-area: nomeusuario
+  grid-area: nomeusuario;
   border: 1px solid #000;
   border-radius: 5px;
   padding: 10px;
+  margin: 10px auto;
+  
+  input {
+    padding: 5px;
+  }
   
 `
 
@@ -62,11 +72,21 @@ export const Messages = styled.div`
   width: 500px;
   overflow-y: scroll;
   overflow-x: hidden;
-  display: block;
   
 `
 
 export const AddMessage = styled.div`
   grid-area: message;
   margin: 10px auto;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 10px;
+  
+  input {
+    padding: 5px;
+  }
+  
+  span{
+    margin-left: 20px;
+  }
 `
