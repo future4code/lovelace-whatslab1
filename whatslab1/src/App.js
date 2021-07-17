@@ -1,14 +1,17 @@
 import React from "react";
-import * as All from "./App.styles"
+import * as All from "./App.styles";
+import avatar from "./img/avatar.jpg";
 
 import UserMessages from "./components/UserMessages/UserMessages";
+import Contacts from "./components/Contacts/Contacts";
 
 class App extends React.Component {
     state = {
         message: [
             {
                 user: "",
-                message: ""
+                message: "",
+                photo: ""
             }
         ],
         valueInputUser: "",
@@ -36,7 +39,8 @@ class App extends React.Component {
 
         const message = {
             user: this.state.valueInputUser + ": ",
-            message: this.state.valueInputMessage
+            message: this.state.valueInputMessage,
+            photo: avatar
         }
 
         const newMessage = [...this.state.message, message]
@@ -66,29 +70,40 @@ class App extends React.Component {
     render() {
         const messages = this.state.message.map((messages, index) => {
             return (
-                <UserMessages
+                <UserMessages key={index}
                     userName={messages.user}
                     userMessage={messages.message}
                 />
             )
         })
 
+        const users = this.state.message.map((messages, index) =>{
+            return (
+                <Contacts key={index}
+                    userName={messages.user}
+                    message={messages.message}
+                    photo={messages.photo}
+                />
+            )
+        })
 
         return (
             <All.Container>
 
                 <All.I1>
                     <All.Contacts>
-                        <All.User>
-                            <div>
-                                <input
-                                    value={this.state.valueInputUser}
-                                    onChange={this.onChangeUser}
-                                    placeholder={"Usuário"}
-                                />
-                            </div>
-                        </All.User>
+                        {users}
                     </All.Contacts>
+
+                    <All.User>
+                        <div>
+                            <input
+                                value={this.state.valueInputUser}
+                                onChange={this.onChangeUser}
+                                placeholder={"Usuário"}
+                            />
+                        </div>
+                    </All.User>
                 </All.I1>
 
                 <All.I2>
